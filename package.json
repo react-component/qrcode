@@ -1,6 +1,6 @@
 {
   "name": "@kiner/rc-qrcode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "base abstract trigger component for react",
   "engines": {
     "node": ">=8.x"
@@ -33,7 +33,8 @@
     "start": "dumi dev",
     "build": "dumi build",
     "compile": "father build && lessc assets/index.less assets/index.css",
-    "prepublishOnly": "npm run compile && np --yolo --no-publish",
+    "bakpublishOnly": "npm run compile && np --yolo --no-publish",
+    "prepublishOnly": "npm run compile",
     "lint": "eslint src/ docs/examples/ --ext .tsx,.ts,.jsx,.js",
     "test": "umi-test",
     "coverage": "rc-test --coverage",

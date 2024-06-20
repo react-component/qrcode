@@ -1,3 +1,10 @@
+// Copyright (c) Project Nayuki. (MIT License)
+// https://www.nayuki.io/page/qr-code-generator-library
+
+// Modification with code reorder and prettier
+
+// --------------------------------------------
+
 // Appends the given number of low-order bits of the given value
 // to the given buffer. Requires 0 <= len <= 31 and 0 <= val < 2^len.
 function appendBits(val: number, len: number, bb: number[]): void {

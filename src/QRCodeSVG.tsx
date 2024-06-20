@@ -1,9 +1,9 @@
 import React from 'react';
 import type { QRPropsSVG } from './interface';
 import {
-  DEFAULT_BGCOLOR,
-  DEFAULT_FGCOLOR,
-  DEFAULT_INCLUDEMARGIN,
+  DEFAULT_BACKGROUND_COLOR,
+  DEFAULT_FRONT_COLOR,
+  DEFAULT_NEED_MARGIN,
   DEFAULT_LEVEL,
   DEFAULT_MINVERSION,
   DEFAULT_SIZE,
@@ -18,9 +18,9 @@ const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>(
       value,
       size = DEFAULT_SIZE,
       level = DEFAULT_LEVEL,
-      bgColor = DEFAULT_BGCOLOR,
-      fgColor = DEFAULT_FGCOLOR,
-      includeMargin = DEFAULT_INCLUDEMARGIN,
+      bgColor = DEFAULT_BACKGROUND_COLOR,
+      fgColor = DEFAULT_FRONT_COLOR,
+      includeMargin = DEFAULT_NEED_MARGIN,
       minVersion = DEFAULT_MINVERSION,
       title,
       marginSize,
@@ -57,18 +57,13 @@ const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>(
           y={calculatedImageSettings.y + margin}
           preserveAspectRatio="none"
           opacity={calculatedImageSettings.opacity}
-          // Note: specified here always, but undefined will result in no attribute.
+          // when crossOrigin is not set, the image will be tainted
+          // and the canvas cannot be exported to an image
           crossOrigin={calculatedImageSettings.crossOrigin}
         />
       );
     }
 
-    // Drawing strategy: instead of a rect per module, we're going to create a
-    // single path for the dark modules and layer that on top of a light rect,
-    // for a total of 2 DOM nodes. We pay a bit more in string concat but that's
-    // way faster than DOM ops.
-    // For level 1, 441 nodes -> 2
-    // For level 40, 31329 -> 2
     const fgPath = generatePath(cellsToDraw, margin);
 
     return (

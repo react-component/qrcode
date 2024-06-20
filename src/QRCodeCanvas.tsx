@@ -2,13 +2,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useQRCode } from './hooks/useQRCode';
 import type { QRPropsCanvas } from './interface';
 import {
-  DEFAULT_BGCOLOR,
-  DEFAULT_FGCOLOR,
-  DEFAULT_INCLUDEMARGIN,
+  DEFAULT_BACKGROUND_COLOR,
+  DEFAULT_FRONT_COLOR,
+  DEFAULT_NEED_MARGIN,
   DEFAULT_LEVEL,
   DEFAULT_MINVERSION,
   DEFAULT_SIZE,
-  SUPPORTS_PATH2D,
+  isSupportPath2d,
   excavateModules,
   generatePath,
 } from './utils';
@@ -19,9 +19,9 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       value,
       size = DEFAULT_SIZE,
       level = DEFAULT_LEVEL,
-      bgColor = DEFAULT_BGCOLOR,
-      fgColor = DEFAULT_FGCOLOR,
-      includeMargin = DEFAULT_INCLUDEMARGIN,
+      bgColor = DEFAULT_BACKGROUND_COLOR,
+      fgColor = DEFAULT_FRONT_COLOR,
+      includeMargin = DEFAULT_NEED_MARGIN,
       minVersion = DEFAULT_MINVERSION,
       marginSize,
       style,
@@ -32,7 +32,6 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     const _canvas = useRef<HTMLCanvasElement | null>(null);
     const _image = useRef<HTMLImageElement>(null);
 
-    // Set the local ref (_canvas) and also the forwarded ref from outside
     const setCanvasRef = useCallback(
       (node: HTMLCanvasElement | null) => {
         _canvas.current = node;
@@ -45,9 +44,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       [forwardedRef],
     );
 
-    // We're just using this state to trigger rerenders when images load. We
-    // Don't actually read the value anywhere. A smarter use of useEffect would
-    // depend on this value.
+    
     const [, setIsImageLoaded] = useState(false);
 
     const { margin, cells, numCells, calculatedImageSettings } = useQRCode({
@@ -61,8 +58,6 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     });
 
     useEffect(() => {
-      // Always update the canvas. It's cheap enough and we want to be correct
-      // with the current state.
       if (_canvas.current != null) {
         const canvas = _canvas.current;
 
@@ -89,23 +84,17 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
           }
         }
 
-        // We're going to scale this so that the number of drawable units
-        // matches the number of cells. This avoids rounding issues, but does
-        // result in some potentially unwanted single pixel issues between
-        // blocks, only in environments that don't support Path2D.
         const pixelRatio = window.devicePixelRatio || 1;
         canvas.height = canvas.width = size * pixelRatio;
         const scale = (size / numCells) * pixelRatio;
         ctx.scale(scale, scale);
-        // console.log('scale', scale, 'size', size, 'numCells', numCells, 'pixelRatio', pixelRatio);
 
-        // Draw solid background, only paint dark modules.
+        
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, numCells, numCells);
 
         ctx.fillStyle = fgColor;
-        if (SUPPORTS_PATH2D) {
-          // $FlowFixMe: Path2D c'tor doesn't support args yet.
+        if (isSupportPath2d) {
           ctx.fill(new Path2D(generatePath(cellsToDraw, margin)));
         } else {
           cells.forEach(function (row, rdx) {
@@ -133,8 +122,6 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       }
     });
 
-    // Ensure we mark image loaded as false here so we trigger updating the
-    // canvas in our other effect.
     useEffect(() => {
       setIsImageLoaded(false);
     }, [imgSrc]);
@@ -151,6 +138,8 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
             setIsImageLoaded(true);
           }}
           ref={_image}
+          // when crossOrigin is not set, the image will be tainted
+          // and the canvas cannot be exported to an image
           crossOrigin={calculatedImageSettings?.crossOrigin}
         />
       );

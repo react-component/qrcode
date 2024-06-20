@@ -1,3 +1,8 @@
+// Part logic is from `qrcode.react`. (ISC License)
+// https://github.com/zpao/qrcode.react
+
+// ==========================================================
+
 import type {
   CrossOrigin,
   ERROR_LEVEL_MAPPED_TYPE,

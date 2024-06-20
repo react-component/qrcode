@@ -30,11 +30,10 @@ npm start
 
 ### props
 
-
 ## API
 
 | Name | Type | Default | Description |
-| --- | --- | --- | --- |
+| ---- | ---- | ------- | ----------- |
 
 ## Test Case
 
@@ -48,3 +47,8 @@ open coverage/ dir
 ## License
 
 rc-qrcode is released under the MIT license.
+
+### Refs
+
+- Util part is from [qrcode.react](https://github.com/zpao/qrcode.react) under ISC license.
+- QR Code generation part is from [qrcode-generator](https://www.nayuki.io/page/qr-code-generator-library) under MIT license.

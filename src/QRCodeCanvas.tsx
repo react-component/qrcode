@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useQRCode } from './hooks/useQRCode';
 import type { QRPropsCanvas } from './interface';
 import {
@@ -29,10 +29,10 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       ...otherProps
     } = props;
     const imgSrc = imageSettings?.src;
-    const _canvas = useRef<HTMLCanvasElement | null>(null);
-    const _image = useRef<HTMLImageElement>(null);
+    const _canvas = React.useRef<HTMLCanvasElement | null>(null);
+    const _image = React.useRef<HTMLImageElement>(null);
 
-    const setCanvasRef = useCallback(
+    const setCanvasRef = React.useCallback(
       (node: HTMLCanvasElement | null) => {
         _canvas.current = node;
         if (typeof forwardedRef === 'function') {
@@ -45,7 +45,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     );
 
     
-    const [, setIsImageLoaded] = useState(false);
+    const [, setIsImageLoaded] = React.useState(false);
 
     const { margin, cells, numCells, calculatedImageSettings } = useQRCode({
       value,
@@ -57,7 +57,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       size,
     });
 
-    useEffect(() => {
+    React.useEffect(() => {
       if (_canvas.current != null) {
         const canvas = _canvas.current;
 
@@ -122,7 +122,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       }
     });
 
-    useEffect(() => {
+    React.useEffect(() => {
       setIsImageLoaded(false);
     }, [imgSrc]);
 

@@ -68,7 +68,7 @@ importers:
         version: 4.2.0
       np:
         specifier: ^10.0.5
-        version: 10.0.6(typescript@5.4.5)
+        version: 10.0.7(typescript@5.4.5)
       rc-test:
         specifier: ^7.0.13
         version: 7.0.15(@babel/core@7.4.5)(@types/node@22.5.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -8114,8 +8114,8 @@ packages:
     resolution: {integrity: sha512-KGvQ0cB70AQfg107Xvs/Fbu+dGmZoTRJp2TaPwcwQm3/7PteUyN2BCgk8KBMPGBUXZdVwyWS8fDCGFygBm19UQ==}
     engines: {node: '>= 0.10'}
 
-  np@10.0.6:
-    resolution: {integrity: sha512-173uUvFDmHtme1ra3JDMjYzqa94XHJAHoNae6lCA4mJWMIz073x9FE2O8SHMMjKXlHetRdOXufLUjdimRxXR3A==}
+  np@10.0.7:
+    resolution: {integrity: sha512-vIPKQwOYKpQU40PU5x/vLfN2haj8ObxMvR1QGt7EZnBPWdm4WEbHdumYAnMV7AeR9kACsMqcqAP37sAo5cW5jA==}
     engines: {git: '>=2.11.0', node: '>=18', npm: '>=9', pnpm: '>=8', yarn: '>=1.7.0'}
     hasBin: true
 
@@ -14333,9 +14333,7 @@ snapshots:
       jest-runner: 24.9.0
       jest-runtime: 24.9.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   '@jest/test-sequencer@29.7.0':
     dependencies:
@@ -23288,7 +23286,7 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  np@10.0.6(typescript@5.4.5):
+  np@10.0.7(typescript@5.4.5):
     dependencies:
       chalk: 5.3.0
       chalk-template: 1.1.0

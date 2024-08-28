@@ -158,7 +158,7 @@ export function getImageSettings(
  */
 export function getMarginSize(needMargin: boolean, marginSize?: number): number {
   if (marginSize != null) {
-    return Math.floor(marginSize);
+    return Math.max(Math.floor(marginSize), 0);
   }
   return needMargin ? SPEC_MARGIN_SIZE : DEFAULT_MARGIN_SIZE;
 }

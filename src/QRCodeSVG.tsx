@@ -1,16 +1,16 @@
 import React from 'react';
-import { useQRCode } from './hooks/useQRCode';
 import type { QRPropsSVG } from './interface';
 import {
   DEFAULT_BACKGROUND_COLOR,
   DEFAULT_FRONT_COLOR,
+  DEFAULT_NEED_MARGIN,
   DEFAULT_LEVEL,
   DEFAULT_MINVERSION,
-  DEFAULT_NEED_MARGIN,
   DEFAULT_SIZE,
   excavateModules,
   generatePath,
 } from './utils';
+import { useQRCode } from './hooks/useQRCode';
 
 const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>(
   function QRCodeSVG(props, forwardedRef) {
@@ -73,7 +73,6 @@ const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>(
         viewBox={`0 0 ${numCells} ${numCells}`}
         ref={forwardedRef}
         role="img"
-        aria-label="QR Code"
         {...otherProps}
       >
         {!!title && <title>{title}</title>}

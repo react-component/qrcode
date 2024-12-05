@@ -65,7 +65,7 @@ importers:
         version: 2.5.2
       less:
         specifier: ^4.2.0
-        version: 4.2.0
+        version: 4.2.1
       np:
         specifier: ^10.0.5
         version: 10.0.7(typescript@5.7.2)
@@ -7019,8 +7019,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  less@4.2.0:
-    resolution: {integrity: sha512-P3b3HJDBtSzsXUl0im2L7gTO5Ubg8mEN6G8qoTS77iXxXX4Hvu4Qj540PZDvQ8V6DmX6iXo98k7Md0Cm1PrLaA==}
+  less@4.2.1:
+    resolution: {integrity: sha512-CasaJidTIhWmjcqv0Uj5vccMI7pJgfD9lMkKtlnTHAdJdYK/7l8pM9tumLyJ0zhbD4KJLo/YvTj+xznQd5NBhg==}
     engines: {node: '>=6'}
     hasBin: true
 
@@ -11483,8 +11483,8 @@ snapshots:
       gulp-watch: 5.0.1
       is-windows: 1.0.2
       jsonml.js: 0.1.0
-      less: 4.2.0
-      less-loader: 7.3.0(less@4.2.0)(webpack@5.92.1(uglify-js@3.18.0))
+      less: 4.2.1
+      less-loader: 7.3.0(less@4.2.1)(webpack@5.92.1(uglify-js@3.18.0))
       less-plugin-npm-import: 2.1.0
       majo: 0.9.1
       mark-twain: 2.0.3
@@ -14728,7 +14728,7 @@ snapshots:
       postcss-preset-env: 7.5.0(postcss@8.4.38)
       rollup-plugin-visualizer: 5.9.0(rollup@3.29.4)
       systemjs: 6.15.1
-      vite: 4.5.2(@types/node@22.10.0)(less@4.2.0)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1)
+      vite: 4.5.2(@types/node@22.10.0)(less@4.2.1)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1)
     transitivePeerDependencies:
       - '@types/node'
       - lightningcss
@@ -15004,7 +15004,7 @@ snapshots:
       '@swc/helpers': 0.5.1
       '@types/resolve': 1.20.6
       chalk: 4.1.2
-      less: 4.2.0
+      less: 4.2.1
       less-plugin-resolve: 1.0.2
       lodash: 4.17.21
       node-libs-browser-okam: 2.2.5
@@ -15180,7 +15180,7 @@ snapshots:
       '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.24.7)
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.24.7)
       react-refresh: 0.14.2
-      vite: 4.5.2(@types/node@22.10.0)(less@4.2.0)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1)
+      vite: 4.5.2(@types/node@22.10.0)(less@4.2.1)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -20852,10 +20852,10 @@ snapshots:
     dependencies:
       flush-write-stream: 1.1.1
 
-  less-loader@7.3.0(less@4.2.0)(webpack@5.92.1(uglify-js@3.18.0)):
+  less-loader@7.3.0(less@4.2.1)(webpack@5.92.1(uglify-js@3.18.0)):
     dependencies:
       klona: 2.0.6
-      less: 4.2.0
+      less: 4.2.1
       loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 5.92.1(uglify-js@3.18.0)
@@ -20883,7 +20883,7 @@ snapshots:
       needle: 3.3.1
       source-map: 0.6.1
 
-  less@4.2.0:
+  less@4.2.1:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
@@ -26018,7 +26018,7 @@ snapshots:
       remove-trailing-separator: 1.1.0
       replace-ext: 1.0.1
 
-  vite@4.5.2(@types/node@22.10.0)(less@4.2.0)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1):
+  vite@4.5.2(@types/node@22.10.0)(less@4.2.1)(lightningcss@1.22.1)(sass@1.77.6)(sugarss@2.0.0)(terser@5.31.1):
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.38
@@ -26026,7 +26026,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.0
       fsevents: 2.3.3
-      less: 4.2.0
+      less: 4.2.1
       lightningcss: 1.22.1
       sass: 1.77.6
       sugarss: 2.0.0

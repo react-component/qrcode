@@ -15,8 +15,9 @@ function appendBits(val: number, len: number, bb: number[]): void {
     let i = len - 1;
     i >= 0;
     i-- // Append bit by bit
-  )
+  ) {
     bb.push((val >>> i) & 1);
+  }
 }
 
 // Returns true iff the i'th bit of x is set to 1.
@@ -112,7 +113,9 @@ export class QrSegment {
   // can be converted to UTF-8 bytes and encoded as a byte mode segment.
   public static makeBytes(data: Readonly<number[]>): QrSegment {
     const bb: number[] = [];
-    for (const b of data) appendBits(b, 8, bb);
+    for (const b of data) {
+      appendBits(b, 8, bb);
+    }
     return new QrSegment(Mode.BYTE, data.length, bb);
   }
 
@@ -258,8 +261,9 @@ export class QrSegment {
     const str = encodeURI(input);
     const result: number[] = [];
     for (let i = 0; i < str.length; i++) {
-      if (str.charAt(i) != '%') result.push(str.charCodeAt(i));
-      else {
+      if (str.charAt(i) != '%') {
+        result.push(str.charCodeAt(i));
+      } else {
         result.push(parseInt(str.substring(i + 1, i + 3), 16));
         i += 2;
       }
@@ -315,7 +319,7 @@ export class QrCode {
   // bytes allowed is 2953. The smallest possible QR Code version is automatically chosen for the output.
   // The ECC level of the result may be higher than the ecl argument if it can be done without increasing the version.
   public static encodeBinary(data: Readonly<number[]>, ecl: Ecc): QrCode {
-    const seg: QrSegment = QrSegment.makeBytes(data);
+    const seg = QrSegment.makeBytes(data);
     return QrCode.encodeSegments([seg], ecl);
   }
 
@@ -346,23 +350,24 @@ export class QrCode {
       ) ||
       mask < -1 ||
       mask > 7
-    )
+    ) {
       throw new RangeError('Invalid value');
+    }
 
     // Find the minimal version number to use
     let version: number;
     let dataUsedBits: number;
     for (version = minVersion; ; version++) {
-      const dataCapacityBits: number =
-        QrCode.getNumDataCodewords(version, oriEcl) * 8; // Number of data bits available
+      const dataCapacityBits = QrCode.getNumDataCodewords(version, oriEcl) * 8; // Number of data bits available
       const usedBits: number = QrSegment.getTotalBits(segs, version);
       if (usedBits <= dataCapacityBits) {
         dataUsedBits = usedBits;
         break; // This version number is found to be suitable
       }
-      if (version >= maxVersion)
+      if (version >= maxVersion) {
         // All versions in the range could not fit the given data
         throw new RangeError('Data too long');
+      }
     }
     let ecl: Ecc = oriEcl;
     // Increase the error correction level while the data still fits in the current version number
@@ -408,7 +413,9 @@ export class QrCode {
     while (dataCodewords.length * 8 < bb.length) {
       dataCodewords.push(0);
     }
-    bb.forEach((b, i) => (dataCodewords[i >>> 3] |= b << (7 - (i & 7))));
+    bb.forEach((b, i) => {
+      dataCodewords[i >>> 3] |= b << (7 - (i & 7));
+    });
 
     // Create the QR Code object
     return new QrCode(version, ecl, dataCodewords, mask);
@@ -460,8 +467,9 @@ export class QrCode {
     this.version = version;
     this.errorCorrectionLevel = errorCorrectionLevel;
     // Check scalar arguments
-    if (version < QrCode.MIN_VERSION || version > QrCode.MAX_VERSION)
+    if (version < QrCode.MIN_VERSION || version > QrCode.MAX_VERSION) {
       throw new RangeError('Version value out of range');
+    }
     if (msk < -1 || msk > 7) {
       throw new RangeError('Mask value out of range');
     }
@@ -469,7 +477,9 @@ export class QrCode {
 
     // Initialize both grids to be size*size arrays of Boolean false
     const row: boolean[] = [];
-    for (let i = 0; i < this.size; i++) row.push(false);
+    for (let i = 0; i < this.size; i++) {
+      row.push(false);
+    }
     for (let i = 0; i < this.size; i++) {
       this.modules.push(row.slice()); // Initially all light
       this.isFunction.push(row.slice());
@@ -570,7 +580,9 @@ export class QrCode {
     assert(bits >>> 15 == 0);
 
     // Draw first copy
-    for (let i = 0; i <= 5; i++) this.setFunctionModule(8, i, getBit(bits, i));
+    for (let i = 0; i <= 5; i++) {
+      this.setFunctionModule(8, i, getBit(bits, i));
+    }
     this.setFunctionModule(8, 7, getBit(bits, 6));
     this.setFunctionModule(8, 8, getBit(bits, 7));
     this.setFunctionModule(7, 8, getBit(bits, 8));
@@ -658,19 +670,15 @@ export class QrCode {
       throw new RangeError('Invalid argument');
     }
     // Calculate parameter numbers
-    const numBlocks: number =
-      QrCode.NUM_ERROR_CORRECTION_BLOCKS[ecl.ordinal][ver];
-    const blockEccLen: number =
-      QrCode.ECC_CODEWORDS_PER_BLOCK[ecl.ordinal][ver];
-    const rawCodewords: number = Math.floor(
-      QrCode.getNumRawDataModules(ver) / 8,
-    );
-    const numShortBlocks: number = numBlocks - (rawCodewords % numBlocks);
-    const shortBlockLen: number = Math.floor(rawCodewords / numBlocks);
+    const numBlocks = QrCode.NUM_ERROR_CORRECTION_BLOCKS[ecl.ordinal][ver];
+    const blockEccLen = QrCode.ECC_CODEWORDS_PER_BLOCK[ecl.ordinal][ver];
+    const rawCodewords = Math.floor(QrCode.getNumRawDataModules(ver) / 8);
+    const numShortBlocks = numBlocks - (rawCodewords % numBlocks);
+    const shortBlockLen = Math.floor(rawCodewords / numBlocks);
 
     // Split data numbero blocks and append ECC to each block
     const blocks: number[][] = [];
-    const rsDiv: number[] = QrCode.reedSolomonComputeDivisor(blockEccLen);
+    const rsDiv = QrCode.reedSolomonComputeDivisor(blockEccLen);
     for (let i = 0, k = 0; i < numBlocks; i++) {
       const dat = data.slice(
         k,
@@ -854,8 +862,9 @@ export class QrCode {
 
     // Balance of dark and light modules
     let dark: number = 0;
-    for (const row of this.modules)
+    for (const row of this.modules) {
       dark = row.reduce((sum, color) => sum + (color ? 1 : 0), dark);
+    }
     const total: number = this.size * this.size; // Note that size is odd, so dark/total != 1/2
     // Compute the smallest numbereger k >= 0 such that (45-5k)% <= dark/total <= (55+5k)%
     const k: number = Math.ceil(Math.abs(dark * 20 - total * 10) / total) - 1;
@@ -874,14 +883,15 @@ export class QrCode {
     if (this.version == 1) {
       return [];
     } else {
-      const numAlign: number = Math.floor(this.version / 7) + 2;
-      const step: number =
+      const numAlign = Math.floor(this.version / 7) + 2;
+      const step =
         this.version == 32
           ? 26
           : Math.ceil((this.version * 4 + 4) / (numAlign * 2 - 2)) * 2;
       const result: number[] = [6];
-      for (let pos = this.size - 7; result.length < numAlign; pos -= step)
+      for (let pos = this.size - 7; result.length < numAlign; pos -= step) {
         result.splice(1, 0, pos);
+      }
       return result;
     }
   }
@@ -925,7 +935,9 @@ export class QrCode {
     // Polynomial coefficients are stored from highest to lowest power, excluding the leading term which is always 1.
     // For example the polynomial x^3 + 255x^2 + 8x + 93 is stored as the unumber8 array [255, 8, 93].
     const result: number[] = [];
-    for (let i = 0; i < degree - 1; i++) result.push(0);
+    for (let i = 0; i < degree - 1; i++) {
+      result.push(0);
+    }
     result.push(1); // Start off with the monomial x^0
 
     // Compute the product polynomial (x - r^0) * (x - r^1) * (x - r^2) * ... * (x - r^{degree-1}),
@@ -949,15 +961,15 @@ export class QrCode {
   private static reedSolomonComputeRemainder(
     data: Readonly<number[]>,
     divisor: Readonly<number[]>,
-  ): number[] {
+  ) {
     const result = divisor.map<number>(() => 0);
     for (const b of data) {
       // Polynomial division
-      const factor: number = b ^ (result.shift() as number);
+      const factor = b ^ result.shift();
       result.push(0);
-      divisor.forEach(
-        (coef, i) => (result[i] ^= QrCode.reedSolomonMultiply(coef, factor)),
-      );
+      divisor.forEach((coef, i) => {
+        result[i] ^= QrCode.reedSolomonMultiply(coef, factor);
+      });
     }
     return result;
   }
@@ -1016,7 +1028,7 @@ export class QrCode {
   private finderPenaltyAddHistory(
     oriCurrentRunLength: number,
     runHistory: number[],
-  ): void {
+  ) {
     let currentRunLength = oriCurrentRunLength;
     if (runHistory[0] == 0) {
       currentRunLength += this.size; // Add light border to initial run

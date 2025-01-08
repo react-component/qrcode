@@ -60,7 +60,7 @@ export type QRProps = {
    * The value to encode into the QR Code. An array of strings can be passed in
    * to represent multiple segments to further optimize the QR Code.
    */
-  value: string;
+  value: string | string[];
   /**
    * The size, in pixels, to render the QR Code.
    * @defaultValue 128
@@ -118,6 +118,14 @@ export type QRProps = {
    * @defaultValue 1
    */
   minVersion?: number;
+
+  /**
+   * If enabled, the Error Correction Level of the result may be higher than
+   * the specified Error Correction Level option if it can be done without
+   * increasing the version.
+   * @defaultValue true
+   */
+  boostLevel?: boolean;
 };
 
 export type QRPropsCanvas = QRProps &

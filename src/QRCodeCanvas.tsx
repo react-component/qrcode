@@ -26,6 +26,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       marginSize,
       style,
       imageSettings,
+      boostLevel,
       ...otherProps
     } = props;
     const imgSrc = imageSettings?.src;
@@ -54,6 +55,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       marginSize,
       imageSettings,
       size,
+      boostLevel,
     });
 
     React.useEffect(() => {
@@ -137,9 +139,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
           src={imgSrc}
           key={imgSrc}
           style={{ display: 'none' }}
-          onLoad={() => {
-            setIsImageLoaded(true);
-          }}
+          onLoad={() => setIsImageLoaded(true)}
           ref={_image}
           // when crossOrigin is not set, the image will be tainted
           // and the canvas cannot be exported to an image

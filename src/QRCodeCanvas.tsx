@@ -14,7 +14,7 @@ import {
 } from './utils';
 
 const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
-  function QRCodeCanvas(props, forwardedRef) {
+  (props, ref) => {
     const {
       value,
       size = DEFAULT_SIZE,
@@ -29,22 +29,21 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       ...otherProps
     } = props;
     const imgSrc = imageSettings?.src;
-    const _canvas = React.useRef<HTMLCanvasElement | null>(null);
+    const _canvas = React.useRef<HTMLCanvasElement>(null);
     const _image = React.useRef<HTMLImageElement>(null);
 
     const setCanvasRef = React.useCallback(
-      (node: HTMLCanvasElement | null) => {
+      (node: HTMLCanvasElement) => {
         _canvas.current = node;
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else if (forwardedRef) {
-          forwardedRef.current = node;
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
         }
       },
-      [forwardedRef],
+      [ref],
     );
 
-    
     const [, setIsImageLoaded] = React.useState(false);
 
     const { margin, cells, numCells, calculatedImageSettings } = useQRCode({
@@ -58,7 +57,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     });
 
     React.useEffect(() => {
-      if (_canvas.current != null) {
+      if (_canvas.current) {
         const canvas = _canvas.current;
 
         const ctx = canvas.getContext('2d');
@@ -89,7 +88,6 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
         const scale = (size / numCells) * pixelRatio;
         ctx.scale(scale, scale);
 
-        
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, numCells, numCells);
 
@@ -97,8 +95,8 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
         if (isSupportPath2d) {
           ctx.fill(new Path2D(generatePath(cellsToDraw, margin)));
         } else {
-          cells.forEach(function (row, rdx) {
-            row.forEach(function (cell, cdx) {
+          cells.forEach((row, rdx) => {
+            row.forEach((cell, cdx) => {
               if (cell) {
                 ctx.fillRect(cdx + margin, rdx + margin, 1, 1);
               }
@@ -126,7 +124,12 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       setIsImageLoaded(false);
     }, [imgSrc]);
 
-    const canvasStyle = { height: size, width: size, ...style };
+    const canvasStyle: React.CSSProperties = {
+      height: size,
+      width: size,
+      ...style,
+    };
+
     let img = null;
     if (imgSrc != null) {
       img = (
@@ -159,6 +162,9 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     );
   },
 );
-QRCodeCanvas.displayName = 'QRCodeCanvas';
+
+if (process.env.NODE_ENV !== 'production') {
+  QRCodeCanvas.displayName = 'QRCodeCanvas';
+}
 
 export { QRCodeCanvas };

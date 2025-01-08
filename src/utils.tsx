@@ -32,19 +32,18 @@ export const SPEC_MARGIN_SIZE = 4;
 export const DEFAULT_MARGIN_SIZE = 0;
 export const DEFAULT_IMG_SCALE = 0.1;
 
-
 // =================== UTILS ==========================
 /**
  * Generate a path string from modules
  * @param modules
- * @param margin 
- * @returns 
+ * @param margin
+ * @returns
  */
-export function generatePath(modules: Modules, margin: number = 0): string {
+export const generatePath = (modules: Modules, margin: number = 0) => {
   const ops: string[] = [];
-  modules.forEach(function (row, y) {
+  modules.forEach((row, y) => {
     let start: number | null = null;
-    row.forEach(function (cell, x) {
+    row.forEach((cell, x) => {
       if (!cell && start !== null) {
         ops.push(
           `M${start + margin} ${y + margin}h${x - start}v1H${start + margin}z`,
@@ -75,14 +74,14 @@ export function generatePath(modules: Modules, margin: number = 0): string {
     });
   });
   return ops.join('');
-}
+};
 /**
  * Excavate modules
- * @param modules 
- * @param excavation 
- * @returns 
+ * @param modules
+ * @param excavation
+ * @returns
  */
-export function excavateModules(modules: Modules, excavation: Excavation): Modules {
+export const excavateModules = (modules: Modules, excavation: Excavation) => {
   return modules.slice().map((row, y) => {
     if (y < excavation.y || y >= excavation.y + excavation.h) {
       return row;
@@ -94,17 +93,17 @@ export function excavateModules(modules: Modules, excavation: Excavation): Modul
       return false;
     });
   });
-}
+};
 
 /**
  * Get image settings
  * @param cells The modules of the QR code
  * @param size The size of the QR code
- * @param margin 
- * @param imageSettings 
- * @returns 
+ * @param margin
+ * @param imageSettings
+ * @returns
  */
-export function getImageSettings(
+export const getImageSettings = (
   cells: Modules,
   size: number,
   margin: number,
@@ -117,7 +116,7 @@ export function getImageSettings(
   excavation: Excavation | null;
   opacity: number;
   crossOrigin: CrossOrigin;
-} {
+} => {
   if (imageSettings == null) {
     return null;
   }
@@ -148,27 +147,28 @@ export function getImageSettings(
   const crossOrigin = imageSettings.crossOrigin;
 
   return { x, y, h, w, excavation, opacity, crossOrigin };
-}
+};
 
 /**
  * Get margin size
  * @param needMargin Whether need margin
  * @param marginSize Custom margin size
- * @returns 
+ * @returns
  */
-export function getMarginSize(needMargin: boolean, marginSize?: number): number {
+export const getMarginSize = (needMargin: boolean, marginSize?: number) => {
   if (marginSize != null) {
     return Math.max(Math.floor(marginSize), 0);
   }
   return needMargin ? SPEC_MARGIN_SIZE : DEFAULT_MARGIN_SIZE;
-}
+};
+
 /**
  * Check if Path2D is supported
  */
-export const isSupportPath2d = (function () {
+export const isSupportPath2d = (() => {
   try {
     new Path2D().addPath(new Path2D());
-  } catch (e) {
+  } catch {
     return false;
   }
   return true;

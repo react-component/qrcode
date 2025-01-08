@@ -1,9 +1,9 @@
 import { QrCode, QrSegment } from '../libs/qrcodegen';
 import type { ErrorCorrectionLevel, ImageSettings } from '../interface';
 import { ERROR_LEVEL_MAP, getImageSettings, getMarginSize } from '../utils';
-import { useMemo } from 'react';
+import React from 'react';
 
-export function useQRCode({
+export const useQRCode = ({
   value,
   level,
   minVersion,
@@ -19,29 +19,25 @@ export function useQRCode({
   marginSize?: number;
   imageSettings?: ImageSettings;
   size: number;
-}) {
-  const qrcode = useMemo(() => {
+}) => {
+  const qrcode = React.useMemo<QrCode>(() => {
     const segments = QrSegment.makeSegments(value);
-    return QrCode.encodeSegments(
-      segments,
-      ERROR_LEVEL_MAP[level],
-      minVersion,
-    );
+    return QrCode.encodeSegments(segments, ERROR_LEVEL_MAP[level], minVersion);
   }, [value, level, minVersion]);
 
-  const { cells, margin, numCells, calculatedImageSettings } = useMemo(() => {
-    const cs = qrcode.getModules();
-
-    const mg = getMarginSize(includeMargin, marginSize);
-    const ncs = cs.length + mg * 2;
-    const cis = getImageSettings(cs, size, mg, imageSettings);
-    return {
-      cells: cs,
-      margin: mg,
-      numCells: ncs,
-      calculatedImageSettings: cis,
-    };
-  }, [qrcode, size, imageSettings, includeMargin, marginSize]);
+  const { cells, margin, numCells, calculatedImageSettings } =
+    React.useMemo(() => {
+      const cs = qrcode.getModules();
+      const mg = getMarginSize(includeMargin, marginSize);
+      const ncs = cs.length + mg * 2;
+      const cis = getImageSettings(cs, size, mg, imageSettings);
+      return {
+        cells: cs,
+        margin: mg,
+        numCells: ncs,
+        calculatedImageSettings: cis,
+      };
+    }, [qrcode, size, imageSettings, includeMargin, marginSize]);
 
   return {
     qrcode,
@@ -50,4 +46,4 @@ export function useQRCode({
     numCells,
     calculatedImageSettings,
   };
-}
+};

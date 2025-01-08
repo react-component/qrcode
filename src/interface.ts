@@ -10,31 +10,32 @@ export type ERROR_LEVEL_MAPPED_TYPE = {
   [index in ErrorCorrectionLevel]: Ecc;
 };
 
-
 export type ImageSettings = {
-    src: string;
-    height: number;
-    width: number;
-    excavate: boolean;
-    x?: number;
-    y?: number;
-    opacity?: number;
-    crossOrigin?: CrossOrigin;
-  };
-  
-  export type QRProps = {
-    value: string;
-    size?: number;
-    level?: ErrorCorrectionLevel;
-    bgColor?: string;
-    fgColor?: string;
-    style?: CSSProperties;
-    includeMargin?: boolean;
-    marginSize?: number;
-    imageSettings?: ImageSettings;
-    title?: string;
-    minVersion?: number;
-  };
-  export type QRPropsCanvas = QRProps & React.CanvasHTMLAttributes<HTMLCanvasElement>;
-  export type QRPropsSVG = QRProps & React.SVGAttributes<SVGSVGElement>;
-  
+  src: string;
+  height: number;
+  width: number;
+  excavate: boolean;
+  x?: number;
+  y?: number;
+  opacity?: number;
+  crossOrigin?: CrossOrigin;
+};
+
+export type QRProps = {
+  value: string;
+  size?: number;
+  level?: ErrorCorrectionLevel;
+  bgColor?: string;
+  fgColor?: string;
+  style?: CSSProperties;
+  includeMargin?: boolean;
+  marginSize?: number;
+  imageSettings?: ImageSettings;
+  title?: string;
+  minVersion?: number;
+};
+
+export type QRPropsCanvas = QRProps &
+  React.CanvasHTMLAttributes<HTMLCanvasElement>;
+
+export type QRPropsSVG = QRProps & React.SVGAttributes<SVGSVGElement>;

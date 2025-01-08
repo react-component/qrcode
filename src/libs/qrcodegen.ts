@@ -371,8 +371,9 @@ export class QrCode {
       if (
         boostEcl &&
         dataUsedBits <= QrCode.getNumDataCodewords(version, newEcl) * 8
-      )
+      ) {
         ecl = newEcl;
+      }
     }
 
     // Concatenate all segments to create the data bit string
@@ -380,13 +381,14 @@ export class QrCode {
     for (const seg of segs) {
       appendBits(seg.mode.modeBits, 4, bb);
       appendBits(seg.numChars, seg.mode.numCharCountBits(version), bb);
-      for (const b of seg.getData()) bb.push(b);
+      for (const b of seg.getData()) {
+        bb.push(b);
+      }
     }
     assert(bb.length == dataUsedBits);
 
     // Add terminator and pad up to a byte if applicable
-    const dataCapacityBits: number =
-      QrCode.getNumDataCodewords(version, ecl) * 8;
+    const dataCapacityBits = QrCode.getNumDataCodewords(version, ecl) * 8;
     assert(bb.length <= dataCapacityBits);
     appendBits(0, Math.min(4, dataCapacityBits - bb.length), bb);
     appendBits(0, (8 - (bb.length % 8)) % 8, bb);
@@ -397,15 +399,16 @@ export class QrCode {
       let padByte = 0xec;
       bb.length < dataCapacityBits;
       padByte ^= 0xec ^ 0x11
-    )
+    ) {
       appendBits(padByte, 8, bb);
+    }
 
     // Pack bits numbero bytes in big endian
     const dataCodewords: number[] = [];
-    while (dataCodewords.length * 8 < bb.length) dataCodewords.push(0);
-    bb.forEach(
-      (b: number, i: number) => (dataCodewords[i >>> 3] |= b << (7 - (i & 7))),
-    );
+    while (dataCodewords.length * 8 < bb.length) {
+      dataCodewords.push(0);
+    }
+    bb.forEach((b, i) => (dataCodewords[i >>> 3] |= b << (7 - (i & 7))));
 
     // Create the QR Code object
     return new QrCode(version, ecl, dataCodewords, mask);
@@ -459,7 +462,9 @@ export class QrCode {
     // Check scalar arguments
     if (version < QrCode.MIN_VERSION || version > QrCode.MAX_VERSION)
       throw new RangeError('Version value out of range');
-    if (msk < -1 || msk > 7) throw new RangeError('Mask value out of range');
+    if (msk < -1 || msk > 7) {
+      throw new RangeError('Mask value out of range');
+    }
     this.size = version * 4 + 17;
 
     // Initialize both grids to be size*size arrays of Boolean false
@@ -558,7 +563,9 @@ export class QrCode {
     // Calculate error correction code and pack bits
     const data: number = (this.errorCorrectionLevel.formatBits << 3) | mask; // errCorrLvl is unumber2, mask is unumber3
     let rem: number = data;
-    for (let i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+    for (let i = 0; i < 10; i++) {
+      rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+    }
     const bits = ((data << 10) | rem) ^ 0x5412; // unumber15
     assert(bits >>> 15 == 0);
 
@@ -567,14 +574,16 @@ export class QrCode {
     this.setFunctionModule(8, 7, getBit(bits, 6));
     this.setFunctionModule(8, 8, getBit(bits, 7));
     this.setFunctionModule(7, 8, getBit(bits, 8));
-    for (let i = 9; i < 15; i++)
+    for (let i = 9; i < 15; i++) {
       this.setFunctionModule(14 - i, 8, getBit(bits, i));
-
+    }
     // Draw second copy
-    for (let i = 0; i < 8; i++)
+    for (let i = 0; i < 8; i++) {
       this.setFunctionModule(this.size - 1 - i, 8, getBit(bits, i));
-    for (let i = 8; i < 15; i++)
+    }
+    for (let i = 8; i < 15; i++) {
       this.setFunctionModule(8, this.size - 15 + i, getBit(bits, i));
+    }
     this.setFunctionModule(8, this.size - 8, true); // Always dark
   }
 
@@ -587,7 +596,9 @@ export class QrCode {
 
     // Calculate error correction code and pack bits
     let rem: number = this.version; // version is unumber6, in the range [7, 40]
-    for (let i = 0; i < 12; i++) rem = (rem << 1) ^ ((rem >>> 11) * 0x1f25);
+    for (let i = 0; i < 12; i++) {
+      rem = (rem << 1) ^ ((rem >>> 11) * 0x1f25);
+    }
     const bits: number = (this.version << 12) | rem; // unumber18
     assert(bits >>> 18 == 0);
 

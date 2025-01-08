@@ -75,6 +75,7 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
   });
   return ops.join('');
 };
+
 /**
  * Excavate modules
  * @param modules

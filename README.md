@@ -71,3 +71,9 @@ rc-qrcode is released under the MIT license.
 
 - Util part is from [qrcode.react](https://github.com/zpao/qrcode.react) under ISC license.
 - QR Code generation part is from [qrcode-generator](https://www.nayuki.io/page/qr-code-generator-library) under MIT license.
+
+## 🤝 Contributing 
+
+<a href="https://openomy.app/github/react-component/qrcode" target="_blank" style="display: block; width: 100%;" align="center">
+  <img src="https://www.openomy.app/svg?repo=react-component/qrcode&chart=bubble&latestMonth=24" target="_blank" alt="Contribution Leaderboard" style="display: block; width: 100%;" />
+</a>

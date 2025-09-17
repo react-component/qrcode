@@ -24,6 +24,7 @@ const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>((props, ref) => {
     title,
     marginSize,
     imageSettings,
+    boostLevel,
     ...otherProps
   } = props;
 
@@ -35,6 +36,7 @@ const QRCodeSVG = React.forwardRef<SVGSVGElement, QRPropsSVG>((props, ref) => {
     marginSize,
     imageSettings,
     size,
+    boostLevel,
   });
 
   let cellsToDraw = cells;

@@ -26,6 +26,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       marginSize,
       style,
       imageSettings,
+      boostLevel,
       ...otherProps
     } = props;
     const imgSrc = imageSettings?.src;
@@ -54,6 +55,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
       marginSize,
       imageSettings,
       size,
+      boostLevel,
     });
 
     React.useEffect(() => {
@@ -134,6 +136,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
     if (imgSrc != null) {
       img = (
         <img
+          alt="QR-Code"
           src={imgSrc}
           key={imgSrc}
           style={{ display: 'none' }}

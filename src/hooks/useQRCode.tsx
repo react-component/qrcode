@@ -28,8 +28,8 @@ export const useQRCode = (opt: Options) => {
 
   const memoizedQrcode = React.useMemo<QrCode>(() => {
     const values = Array.isArray(value) ? value : [value];
-    const segments = values.reduce<QrSegment[]>((acc, v) => {
-      acc.push(...QrSegment.makeSegments(v));
+    const segments = values.reduce<QrSegment[]>((acc, val) => {
+      acc.push(...QrSegment.makeSegments(val));
       return acc;
     }, []);
     return QrCode.encodeSegments(

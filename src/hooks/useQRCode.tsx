@@ -4,13 +4,14 @@ import { ERROR_LEVEL_MAP, getImageSettings, getMarginSize } from '../utils';
 import React from 'react';
 
 interface Options {
-  value: string;
+  value: string | string[];
   level: ErrorCorrectionLevel;
   minVersion: number;
   includeMargin: boolean;
   marginSize?: number;
   imageSettings?: ImageSettings;
   size: number;
+  boostLevel?: boolean;
 }
 
 export const useQRCode = (opt: Options) => {
@@ -22,12 +23,24 @@ export const useQRCode = (opt: Options) => {
     marginSize,
     imageSettings,
     size,
+    boostLevel,
   } = opt;
 
-  const memoizedQrcode = React.useMemo(() => {
-    const segments = QrSegment.makeSegments(value);
-    return QrCode.encodeSegments(segments, ERROR_LEVEL_MAP[level], minVersion);
-  }, [value, level, minVersion]);
+  const memoizedQrcode = React.useMemo<QrCode>(() => {
+    const values = Array.isArray(value) ? value : [value];
+    const segments = values.reduce<QrSegment[]>((acc, val) => {
+      acc.push(...QrSegment.makeSegments(val));
+      return acc;
+    }, []);
+    return QrCode.encodeSegments(
+      segments,
+      ERROR_LEVEL_MAP[level],
+      minVersion,
+      undefined,
+      undefined,
+      boostLevel,
+    );
+  }, [value, level, minVersion, boostLevel]);
 
   return React.useMemo(() => {
     const cs = memoizedQrcode.getModules();

@@ -40,8 +40,7 @@
     "now-build": "npm run build"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.7",
-    "classnames": "^2.3.2"
+    "@babel/runtime": "^7.24.7"
   },
   "devDependencies": {
     "@ant-design/tools": "^18.0.2",
@@ -49,7 +48,6 @@
     "@rc-component/np": "^1.0.0",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^16.0.0",
-    "@types/classnames": "^2.2.10",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.5.1",
     "@types/react": "^19.1.0",

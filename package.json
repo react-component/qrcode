@@ -53,7 +53,6 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "@umijs/fabric": "^4.0.1",
-    "cross-env": "^7.0.1",
     "dumi": "^2.1.0",
     "eslint": "^8.51.0",
     "father": "^4.0.0",
@@ -62,7 +61,6 @@
     "rc-test": "^7.0.13",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "regenerator-runtime": "^0.14.0",
     "ts-jest": "^29.1.4",
     "typescript": "^5.1.6"
   },

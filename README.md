@@ -126,19 +126,12 @@ npm run build
 
 ## Release
 
-Package artifacts are built with Father:
-
 ```bash
-npm run compile
+npm run prepublishOnly
 ```
 
-Publishing is handled by `rc-np` through the `prepublishOnly` script.
+The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
 
 ## License
 
-`@rc-component/qrcode` is released under the MIT license.
-
-### Credits
-
-- Utility logic is derived from [qrcode.react](https://github.com/zpao/qrcode.react) under the ISC license.
-- QR Code generation is derived from [qrcode-generator](https://www.nayuki.io/page/qr-code-generator-library) under the MIT license.
+@rc-component/qrcode is released under the [MIT](./LICENSE) license.

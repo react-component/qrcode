@@ -1,8 +1,10 @@
-import { QRCodeCanvas } from 'rc-qrcode';
+import { QRCodeCanvas } from '@rc-component/qrcode';
 import React from 'react';
 
 const downloadQRCode = () => {
-  const canvas = document.getElementById('myqrcode')?.querySelector<HTMLCanvasElement>('canvas');
+  const canvas = document
+    .getElementById('myqrcode')
+    ?.querySelector<HTMLCanvasElement>('canvas');
   if (canvas) {
     const url = canvas.toDataURL();
     const a = document.createElement('a');

@@ -1,4 +1,4 @@
-import { QRCodeCanvas } from 'rc-qrcode';
+import { QRCodeCanvas } from '@rc-component/qrcode';
 import React from 'react';
 
 export default () => {

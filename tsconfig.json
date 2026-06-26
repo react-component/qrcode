@@ -11,7 +11,9 @@
     "paths": {
       "@/*": ["src/*"],
       "@@/*": [".dumi/tmp/*"],
-      "rc-qrcode": ["src/index.tsx"]
+      "@rc-component/qrcode": ["src/index.tsx"]
     }
-  }
+  },
+  "include": [".dumirc.ts", "src", "docs", "tests"],
+  "exclude": ["node_modules", "lib", "es", "dist", "docs-dist", ".dumi"]
 }

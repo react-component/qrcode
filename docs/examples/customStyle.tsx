@@ -1,4 +1,4 @@
-import { QRCodeCanvas } from 'rc-qrcode';
+import { QRCodeCanvas } from '@rc-component/qrcode';
 import React from 'react';
 
 export default () => {
@@ -21,7 +21,11 @@ export default () => {
         title="Ant Design"
         fgColor="green"
         bgColor="#fff"
-        style={{ border: '5px solid #000', borderRadius: '10px', padding: '10px'}}
+        style={{
+          border: '5px solid #000',
+          borderRadius: '10px',
+          padding: '10px',
+        }}
       />
     </div>
   );

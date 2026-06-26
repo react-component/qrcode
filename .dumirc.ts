@@ -3,12 +3,15 @@ import path from 'path';
 
 export default defineConfig({
   alias: {
-    'rc-qrcode$': path.resolve('src'),
-    'rc-qrcode/es': path.resolve('src'),
+    '@rc-component/qrcode$': path.resolve('src'),
+    '@rc-component/qrcode/es': path.resolve('src'),
   },
   favicons: ['https://avatars0.githubusercontent.com/u/9441414?s=200&v=4'],
   themeConfig: {
-    name: 'Qrcode',
+    name: 'QRCode',
     logo: 'https://avatars0.githubusercontent.com/u/9441414?s=200&v=4',
   },
+  outputPath: 'docs-dist',
+  base: process.env.GH_PAGES ? '/qrcode/' : '/',
+  publicPath: process.env.GH_PAGES ? '/qrcode/' : '/',
 });

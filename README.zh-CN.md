@@ -1,7 +1,6 @@
 <div align="center">
   <h1>@rc-component/qrcode</h1>
-  <p><sub>Ant Design 生态的一部分。</sub></p>
-  <img alt="Ant Design" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+  <p><sub><img alt="Ant Design" height="14" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" style="vertical-align: -0.125em;" /> Ant Design 生态的一部分。</sub></p>
   <p>🔳 React 二维码组件，支持 Canvas、SVG、纠错等级和嵌入 logo。</p>
 
   <p>
@@ -19,10 +18,10 @@
 
 ## 特性
 
-- `QRCodeCanvas` and `QRCodeSVG` exports for different rendering targets.
-- 支持 custom size, colors, title text, margins, error correction level, and minimum QR version.
-- 支持 embedded logo images with excavation and optional cross-origin handling.
-- TypeScript definitions for QR props and image settings.
+- `QRCodeCanvas` 和 `QRCodeSVG` 导出用于不同的渲染目标。
+- 支持自定义尺寸、颜色、标题文本、边距、纠错级别和最小二维码版本。
+- 通过挖掘和可选的跨域处理支持嵌入徽标图像。
+- QR 属性和图像设置的 TypeScript 定义。
 
 ## 安装
 
@@ -69,39 +68,39 @@ npm start
 
 ### QRCodeCanvas
 
-`QRCodeCanvas` accepts `QRProps` plus native canvas attributes.
+`QRCodeCanvas` 接受 `QRProps` 加上本机画布属性。
 
 ### QRCodeSVG
 
-`QRCodeSVG` accepts `QRProps` plus native SVG attributes.
+`QRCodeSVG` 接受 `QRProps` 加上本机 SVG 属性。
 
 ### QRProps
 
 | 名称            | 类型                             | 默认值     | 说明                                                                                        |
 | --------------- | -------------------------------- | ----------- | -------------------------------------------------------------------------------------------------- |
 | `bgColor`       | string                           | `'#FFFFFF'` | Background color.                                                                                  |
-| `boostLevel`    | boolean                          | true        | Allow the encoder to raise the error correction level when possible without increasing QR version. |
+| `boostLevel`    | boolean                          | true        | 允许编码器在可能的情况下提高纠错级别，而无需增加 QR 版本。 |
 | `fgColor`       | string                           | `'#000000'` | Foreground color.                                                                                  |
-| `imageSettings` | ImageSettings                    | -           | Embedded image configuration.                                                                      |
-| `includeMargin` | boolean                          | false       | Deprecated. Use `marginSize` instead.                                                              |
+| `imageSettings` | ImageSettings                    | -           | 内嵌图片配置。                                                                      |
+| `includeMargin` | boolean                          | false       | 已弃用。请改用 `marginSize`。                                                              |
 | `level`         | `'L'` \| `'M'` \| `'Q'` \| `'H'` | `'L'`       | Error correction level.                                                                            |
 | `marginSize`    | number                           | 0           | Margin size in QR modules.                                                                         |
-| `minVersion`    | number                           | 1           | Minimum QR Code version from 1 to 40.                                                              |
+| `minVersion`    | number                           | 1           | 最低 QR 码版本从 1 到 40。                                                              |
 | `size`          | number                           | 128         | Rendered size in pixels.                                                                           |
-| `style`         | React.CSSProperties              | -           | Element style.                                                                                     |
+| `style`         | React.CSSProperties              | -           | 元素风格。                                                                                     |
 | `title`         | string                           | -           | Accessible title.                                                                                  |
-| `value`         | string \| string[]               | -           | Content encoded into the QR Code.                                                                  |
+| `value`         | string \| string[]               | -           | 编码到二维码中的内容。                                                                  |
 
 ### ImageSettings
 
 | 名称          | 类型                                         | 默认值  | 说明                                   |
 | ------------- | -------------------------------------------- | -------- | --------------------------------------------- |
-| `crossOrigin` | `'anonymous'` \| `'use-credentials'` \| `''` | -        | Cross-origin behavior for the embedded image. |
-| `excavate`    | boolean                                      | -        | Clear QR modules under the embedded image.    |
-| `height`      | number                                       | -        | Image height in pixels.                       |
-| `opacity`     | number                                       | 1        | Image opacity from 0 to 1.                    |
+| `crossOrigin` | `'anonymous'` \| `'use-credentials'` \| `''` | -        | 嵌入图像的跨源行为。 |
+| `excavate`    | boolean                                      | -        | 清除嵌入图像下的 QR 模块。    |
+| `height`      | number                                       | -        | 图像高度（以像素为单位）。                       |
+| `opacity`     | number                                       | 1        | 图像不透明度从 0 到 1。                    |
 | `src`         | string                                       | -        | Image URI.                                    |
-| `width`       | number                                       | -        | Image width in pixels.                        |
+| `width`       | number                                       | -        | 图像宽度（以像素为单位）。                        |
 | `x`           | number                                       | centered | Horizontal offset.                            |
 | `y`           | number                                       | centered | Vertical offset.                              |
 
@@ -122,8 +121,8 @@ npm run build
 npm run prepublishOnly
 ```
 
-The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
+包构建完成后，发布流程由 `@rc-component/np` 通过 `rc-np` 命令处理。
 
 ## 许可证
 
-@rc-component/qrcode is released under the [MIT](./LICENSE) license.
+@rc-component/qrcode 基于 [MIT](./LICENSE) 许可证发布。

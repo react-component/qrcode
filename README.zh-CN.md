@@ -1,6 +1,7 @@
 <div align="center">
   <h1>@rc-component/qrcode</h1>
   <p><sub>Ant Design 生态的一部分。</sub></p>
+  <img alt="Ant Design" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
   <p>🔳 React 二维码组件，支持 Canvas、SVG、纠错等级和嵌入 logo。</p>
 
   <p>

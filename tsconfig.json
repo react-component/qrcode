@@ -9,11 +9,30 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": [".dumi/tmp/*"],
-      "@rc-component/qrcode": ["src/index.tsx"]
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "@@/*": [
+        ".dumi/tmp/*"
+      ],
+      "@rc-component/qrcode": [
+        "src/index.tsx"
+      ]
+    },
+    "ignoreDeprecations": "5.0"
   },
-  "include": [".dumirc.ts", "src", "docs", "tests"],
-  "exclude": ["node_modules", "lib", "es", "dist", "docs-dist", ".dumi"]
+  "include": [
+    ".dumirc.ts",
+    "src",
+    "docs",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "docs-dist",
+    ".dumi"
+  ]
 }

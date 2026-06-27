@@ -1,12 +1,7 @@
 <div align="center">
   <h1>@rc-component/qrcode</h1>
+  <p><sub>Part of the Ant Design ecosystem.</sub></p>
   <p>🔳 React QR Code components for canvas and SVG rendering.</p>
-
-  <p>
-    <a href="https://ant.design">
-      <img width="32" height="32" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="Ant Design" />
-    </a>
-  </p>
   <p>
     Part of the <a href="https://ant.design">Ant Design</a> ecosystem
   </p>
@@ -21,14 +16,6 @@
   </p>
 </div>
 
-<p align="center">
-  <sub>
-    <a href="https://ant.design">
-      <img alt="Ant Design" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" height="16">
-    </a>
-    Part of the Ant Design ecosystem.
-  </sub>
-</p>
 
 ## Highlights
 
@@ -47,8 +34,6 @@ npm install @rc-component/qrcode
 
 ```tsx | pure
 import { QRCodeCanvas } from '@rc-component/qrcode';
-import React from 'react';
-
 export default () => (
   <QRCodeCanvas value="https://ant.design" size={200} title="Ant Design" />
 );
@@ -56,8 +41,6 @@ export default () => (
 
 ```tsx | pure
 import { QRCodeSVG } from '@rc-component/qrcode';
-import React from 'react';
-
 export default () => (
   <QRCodeSVG
     value="https://ant.design"

@@ -2,9 +2,6 @@
   <h1>@rc-component/qrcode</h1>
   <p><sub>Part of the Ant Design ecosystem.</sub></p>
   <p>🔳 React QR Code components for canvas and SVG rendering.</p>
-  <p>
-    Part of the <a href="https://ant.design">Ant Design</a> ecosystem
-  </p>
 
   <p>
     <a href="https://www.npmjs.com/package/@rc-component/qrcode"><img src="https://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square" alt="npm version" /></a>

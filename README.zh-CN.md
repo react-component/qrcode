@@ -1,7 +1,7 @@
 <div align="center">
   <h1>@rc-component/qrcode</h1>
-  <p><sub>Part of the Ant Design ecosystem.</sub></p>
-  <p>🔳 React QR Code components for canvas and SVG rendering.</p>
+  <p><sub>Ant Design 生态的一部分。</sub></p>
+  <p>🔳 React 二维码组件，支持 Canvas、SVG、纠错等级和嵌入 logo。</p>
 
   <p>
     <a href="https://www.npmjs.com/package/@rc-component/qrcode"><img src="https://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square" alt="npm version" /></a>
@@ -13,23 +13,23 @@
   </p>
 </div>
 
-<p align="center">English | <a href="./README.zh-CN.md">简体中文</a></p>
+<p align="center"><a href="./README.md">English</a> | 简体中文</p>
 
 
-## Highlights
+## 特性
 
 - `QRCodeCanvas` and `QRCodeSVG` exports for different rendering targets.
-- Supports custom size, colors, title text, margins, error correction level, and minimum QR version.
-- Supports embedded logo images with excavation and optional cross-origin handling.
+- 支持 custom size, colors, title text, margins, error correction level, and minimum QR version.
+- 支持 embedded logo images with excavation and optional cross-origin handling.
 - TypeScript definitions for QR props and image settings.
 
-## Install
+## 安装
 
 ```bash
 npm install @rc-component/qrcode
 ```
 
-## Usage
+## 使用
 
 ```tsx | pure
 import { QRCodeCanvas } from '@rc-component/qrcode';
@@ -55,9 +55,9 @@ export default () => (
 );
 ```
 
-## Examples
+## 示例
 
-Run the examples locally:
+本地运行示例：
 
 ```bash
 npm install
@@ -76,7 +76,7 @@ npm start
 
 ### QRProps
 
-| Name            | Type                             | Default     | Description                                                                                        |
+| 名称            | 类型                             | 默认值     | 说明                                                                                        |
 | --------------- | -------------------------------- | ----------- | -------------------------------------------------------------------------------------------------- |
 | `bgColor`       | string                           | `'#FFFFFF'` | Background color.                                                                                  |
 | `boostLevel`    | boolean                          | true        | Allow the encoder to raise the error correction level when possible without increasing QR version. |
@@ -93,7 +93,7 @@ npm start
 
 ### ImageSettings
 
-| Name          | Type                                         | Default  | Description                                   |
+| 名称          | 类型                                         | 默认值  | 说明                                   |
 | ------------- | -------------------------------------------- | -------- | --------------------------------------------- |
 | `crossOrigin` | `'anonymous'` \| `'use-credentials'` \| `''` | -        | Cross-origin behavior for the embedded image. |
 | `excavate`    | boolean                                      | -        | Clear QR modules under the embedded image.    |
@@ -104,7 +104,7 @@ npm start
 | `x`           | number                                       | centered | Horizontal offset.                            |
 | `y`           | number                                       | centered | Vertical offset.                              |
 
-## Development
+## 本地开发
 
 ```bash
 npm install
@@ -115,7 +115,7 @@ npm run compile
 npm run build
 ```
 
-## Release
+## 发布
 
 ```bash
 npm run prepublishOnly
@@ -123,6 +123,6 @@ npm run prepublishOnly
 
 The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
 
-## License
+## 许可证
 
 @rc-component/qrcode is released under the [MIT](./LICENSE) license.

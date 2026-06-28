@@ -23,6 +23,7 @@
   },
   "include": [
     ".dumirc.ts",
+    ".fatherrc.ts",
     "src",
     "docs",
     "tests"

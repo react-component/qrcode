@@ -90,7 +90,7 @@ npm start
 | `minVersion`    | number                           | 1           | 最低 QR 码版本从 1 到 40。                                                              |
 | `size`          | number                           | 128         | 渲染尺寸，单位为像素。                                                                             |
 | `style`         | React.CSSProperties              | -           | 元素风格。                                                                                     |
-| `title`         | string                           | -           | Accessible title.                                                                                  |
+| `title`         | string                           | -           | 无障碍标题。                                                                                        |
 | `value`         | string \| string[]               | -           | 编码到二维码中的内容。                                                                  |
 
 ### ImageSettings
@@ -101,7 +101,7 @@ npm start
 | `excavate`    | boolean                                      | -        | 清除嵌入图像下的 QR 模块。    |
 | `height`      | number                                       | -        | 图像高度（以像素为单位）。                       |
 | `opacity`     | number                                       | 1        | 图像不透明度从 0 到 1。                    |
-| `src`         | string                                       | -        | Image URI.                                    |
+| `src`         | string                                       | -        | 图片地址。                                  |
 | `width`       | number                                       | -        | 图像宽度（以像素为单位）。                        |
 | `x`           | number                                       | centered | 水平偏移。                                   |
 | `y`           | number                                       | centered | 垂直偏移。                                   |

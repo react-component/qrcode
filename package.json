@@ -41,7 +41,8 @@
     "prettier": "prettier --write --ignore-unknown .",
     "test": "rc-test",
     "coverage": "rc-test --coverage",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.7"
@@ -69,7 +70,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-jest": "^29.4.11",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
@@ -77,5 +80,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   }
 }

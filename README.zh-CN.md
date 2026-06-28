@@ -4,12 +4,12 @@
   <p>🔳 React 二维码组件，支持 Canvas、SVG、纠错等级和嵌入 logo。</p>
 
   <p>
-    <a href="https://www.npmjs.com/package/@rc-component/qrcode"><img src="https://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square" alt="npm version" /></a>
-    <a href="https://npmjs.org/package/@rc-component/qrcode"><img src="https://img.shields.io/npm/dm/@rc-component/qrcode.svg?style=flat-square" alt="npm downloads" /></a>
-    <a href="https://github.com/react-component/qrcode/actions"><img src="https://github.com/react-component/qrcode/actions/workflows/react-component-ci.yml/badge.svg" alt="CI" /></a>
-    <a href="https://app.codecov.io/gh/react-component/qrcode"><img src="https://img.shields.io/codecov/c/github/react-component/qrcode/master.svg?style=flat-square" alt="Codecov" /></a>
-    <a href="https://bundlephobia.com/package/@rc-component/qrcode"><img src="https://badgen.net/bundlephobia/minzip/@rc-component/qrcode" alt="Bundle size" /></a>
-    <a href="https://github.com/umijs/dumi"><img src="https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square" alt="dumi" /></a>
+    <a href="https://npmjs.org/package/@rc-component/qrcode"><img alt="NPM version" src="https://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square"></a>
+    <a href="https://npmjs.org/package/@rc-component/qrcode"><img alt="npm downloads" src="https://img.shields.io/npm/dm/@rc-component/qrcode.svg?style=flat-square"></a>
+    <a href="https://github.com/react-component/qrcode/actions/workflows/react-component-ci.yml"><img alt="build status" src="https://github.com/react-component/qrcode/actions/workflows/react-component-ci.yml/badge.svg"></a>
+    <a href="https://app.codecov.io/gh/react-component/qrcode"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/react-component/qrcode/master.svg?style=flat-square"></a>
+    <a href="https://bundlephobia.com/package/@rc-component/qrcode"><img alt="bundle size" src="https://img.shields.io/bundlephobia/minzip/@rc-component/qrcode?style=flat-square"></a>
+    <a href="https://github.com/umijs/dumi"><img alt="dumi" src="https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square"></a>
   </p>
 </div>
 

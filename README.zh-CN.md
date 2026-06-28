@@ -80,15 +80,15 @@ npm start
 
 | 名称            | 类型                             | 默认值     | 说明                                                                                        |
 | --------------- | -------------------------------- | ----------- | -------------------------------------------------------------------------------------------------- |
-| `bgColor`       | string                           | `'#FFFFFF'` | Background color.                                                                                  |
+| `bgColor`       | string                           | `'#FFFFFF'` | 背景色。                                                                                           |
 | `boostLevel`    | boolean                          | true        | 允许编码器在可能的情况下提高纠错级别，而无需增加 QR 版本。 |
-| `fgColor`       | string                           | `'#000000'` | Foreground color.                                                                                  |
+| `fgColor`       | string                           | `'#000000'` | 前景色。                                                                                           |
 | `imageSettings` | ImageSettings                    | -           | 内嵌图片配置。                                                                      |
 | `includeMargin` | boolean                          | false       | 已弃用。请改用 `marginSize`。                                                              |
-| `level`         | `'L'` \| `'M'` \| `'Q'` \| `'H'` | `'L'`       | Error correction level.                                                                            |
-| `marginSize`    | number                           | 0           | Margin size in QR modules.                                                                         |
+| `level`         | `'L'` \| `'M'` \| `'Q'` \| `'H'` | `'L'`       | 纠错等级。                                                                                         |
+| `marginSize`    | number                           | 0           | 二维码模块的外边距大小。                                                                           |
 | `minVersion`    | number                           | 1           | 最低 QR 码版本从 1 到 40。                                                              |
-| `size`          | number                           | 128         | Rendered size in pixels.                                                                           |
+| `size`          | number                           | 128         | 渲染尺寸，单位为像素。                                                                             |
 | `style`         | React.CSSProperties              | -           | 元素风格。                                                                                     |
 | `title`         | string                           | -           | Accessible title.                                                                                  |
 | `value`         | string \| string[]               | -           | 编码到二维码中的内容。                                                                  |
@@ -103,8 +103,8 @@ npm start
 | `opacity`     | number                                       | 1        | 图像不透明度从 0 到 1。                    |
 | `src`         | string                                       | -        | Image URI.                                    |
 | `width`       | number                                       | -        | 图像宽度（以像素为单位）。                        |
-| `x`           | number                                       | centered | Horizontal offset.                            |
-| `y`           | number                                       | centered | Vertical offset.                              |
+| `x`           | number                                       | centered | 水平偏移。                                   |
+| `y`           | number                                       | centered | 垂直偏移。                                   |
 
 ## 本地开发
 

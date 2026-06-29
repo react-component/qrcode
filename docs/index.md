@@ -1,7 +1,7 @@
 ---
 hero:
-  title: rc-qrcode
-  description: React Qrcode Component
+  title: '@rc-component/qrcode'
+  description: React QR Code component
 ---
 
 <embed src="../README.md"></embed>

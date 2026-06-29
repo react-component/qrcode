@@ -1,79 +1,132 @@
-# @rc-component/qrcode
+<div align="center">
+  <h1>@rc-component/qrcode</h1>
+  <p><sub><img alt="Ant Design" height="14" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" style="vertical-align: -0.125em;" /> Part of the Ant Design ecosystem.</sub></p>
+  <p>🔳 React QR Code components for canvas and SVG rendering.</p>
 
-React QRCode Component
+  <p>
+    <a href="https://npmjs.org/package/@rc-component/qrcode"><img alt="NPM version" src="https://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square"></a>
+    <a href="https://npmjs.org/package/@rc-component/qrcode"><img alt="npm downloads" src="https://img.shields.io/npm/dm/@rc-component/qrcode.svg?style=flat-square"></a>
+    <a href="https://github.com/react-component/qrcode/actions/workflows/react-component-ci.yml"><img alt="build status" src="https://github.com/react-component/qrcode/actions/workflows/react-component-ci.yml/badge.svg"></a>
+    <a href="https://app.codecov.io/gh/react-component/qrcode"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/react-component/qrcode/master.svg?style=flat-square"></a>
+    <a href="https://bundlephobia.com/package/@rc-component/qrcode"><img alt="bundle size" src="https://img.shields.io/bundlephobia/minzip/@rc-component/qrcode?style=flat-square"></a>
+    <a href="https://github.com/umijs/dumi"><img alt="dumi" src="https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square"></a>
+  </p>
+</div>
 
-[![NPM version][npm-image]][npm-url]
-[![npm download][download-image]][download-url]
-[![build status][github-actions-image]][github-actions-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![bundle size][bundlephobia-image]][bundlephobia-url]
-[![dumi][dumi-image]][dumi-url]
+<p align="center">English | <a href="./README.zh-CN.md">简体中文</a></p>
 
-[npm-image]: http://img.shields.io/npm/v/@rc-component/qrcode.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/@rc-component/qrcode
-[travis-image]: https://img.shields.io/travis/react-component/qrcode/master?style=flat-square
-[travis-url]: https://travis-ci.com/react-component/qrcode
-[github-actions-image]: https://github.com/react-component/qrcode/workflows/CI/badge.svg
-[github-actions-url]: https://github.com/react-component/qrcode/actions
-[codecov-image]: https://img.shields.io/codecov/c/github/react-component/qrcode/master.svg?style=flat-square
-[codecov-url]: https://app.codecov.io/gh/react-component/qrcode
-[david-url]: https://david-dm.org/react-component/qrcode
-[david-image]: https://david-dm.org/react-component/qrcode/status.svg?style=flat-square
-[david-dev-url]: https://david-dm.org/react-component/qrcode?type=dev
-[david-dev-image]: https://david-dm.org/react-component/qrcode/dev-status.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@rc-component/qrcode.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@rc-component/qrcode
-[bundlephobia-url]: https://bundlephobia.com/package/@rc-component/qrcode
-[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/@rc-component/qrcode
-[dumi-url]: https://github.com/umijs/dumi
-[dumi-image]: https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square
+
+## Highlights
+
+- `QRCodeCanvas` and `QRCodeSVG` exports for different rendering targets.
+- Supports custom size, colors, title text, margins, error correction level, and minimum QR version.
+- Supports embedded logo images with excavation and optional cross-origin handling.
+- TypeScript definitions for QR props and image settings.
 
 ## Install
 
-[![@rc-component/qrcode](https://nodei.co/npm/@rc-component/qrcode.png)](https://npmjs.org/package/@rc-component/qrcode)
+```bash
+npm install @rc-component/qrcode
+```
 
 ## Usage
 
-## Example
-
-http://localhost:8001
-
-## Development
-
+```tsx | pure
+import { QRCodeCanvas } from '@rc-component/qrcode';
+export default () => (
+  <QRCodeCanvas value="https://ant.design" size={200} title="Ant Design" />
+);
 ```
+
+```tsx | pure
+import { QRCodeSVG } from '@rc-component/qrcode';
+export default () => (
+  <QRCodeSVG
+    value="https://ant.design"
+    size={200}
+    level="H"
+    imageSettings={{
+      src: 'https://avatars0.githubusercontent.com/u/9441414?s=30&v=4',
+      width: 30,
+      height: 30,
+      excavate: true,
+    }}
+  />
+);
+```
+
+## Examples
+
+Run the local dumi site:
+
+```bash
 npm install
 npm start
 ```
 
-## API
-
-### props
+Then open `http://localhost:8000`.
 
 ## API
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+### QRCodeCanvas
 
-## Test Case
+`QRCodeCanvas` accepts `QRProps` plus native canvas attributes.
 
-```
+### QRCodeSVG
+
+`QRCodeSVG` accepts `QRProps` plus native SVG attributes.
+
+### QRProps
+
+| Name            | Type                             | Default     | Description                                                                                        |
+| --------------- | -------------------------------- | ----------- | -------------------------------------------------------------------------------------------------- |
+| `bgColor`       | string                           | `'#FFFFFF'` | Background color.                                                                                  |
+| `boostLevel`    | boolean                          | true        | Allow the encoder to raise the error correction level when possible without increasing QR version. |
+| `fgColor`       | string                           | `'#000000'` | Foreground color.                                                                                  |
+| `imageSettings` | ImageSettings                    | -           | Embedded image configuration.                                                                      |
+| `includeMargin` | boolean                          | false       | Deprecated. Use `marginSize` instead.                                                              |
+| `level`         | `'L'` \| `'M'` \| `'Q'` \| `'H'` | `'L'`       | Error correction level.                                                                            |
+| `marginSize`    | number                           | 0           | Margin size in QR modules.                                                                         |
+| `minVersion`    | number                           | 1           | Minimum QR Code version from 1 to 40.                                                              |
+| `size`          | number                           | 128         | Rendered size in pixels.                                                                           |
+| `style`         | React.CSSProperties              | -           | Element style.                                                                                     |
+| `title`         | string                           | -           | Accessible title.                                                                                  |
+| `value`         | string \| string[]               | -           | Content encoded into the QR Code.                                                                  |
+
+### ImageSettings
+
+| Name          | Type                                         | Default  | Description                                   |
+| ------------- | -------------------------------------------- | -------- | --------------------------------------------- |
+| `crossOrigin` | `'anonymous'` \| `'use-credentials'` \| `''` | -        | Cross-origin behavior for the embedded image. |
+| `excavate`    | boolean                                      | -        | Clear QR modules under the embedded image.    |
+| `height`      | number                                       | -        | Image height in pixels.                       |
+| `opacity`     | number                                       | 1        | Image opacity from 0 to 1.                    |
+| `src`         | string                                       | -        | Image URI.                                    |
+| `width`       | number                                       | -        | Image width in pixels.                        |
+| `x`           | number                                       | centered | Horizontal offset.                            |
+| `y`           | number                                       | centered | Vertical offset.                              |
+
+## Development
+
+```bash
+npm install
+npm start
 npm test
-npm run coverage
+npm run tsc
+npm run compile
+npm run build
 ```
 
-open coverage/ dir
+The dumi site runs at `http://localhost:8000` by default.
+
+## Release
+
+```bash
+npm run prepublishOnly
+```
+
+The release flow is handled by `@rc-component/np` through the `rc-np` command after the package build.
 
 ## License
 
-rc-qrcode is released under the MIT license.
-
-### Refs
-
-- Util part is from [qrcode.react](https://github.com/zpao/qrcode.react) under ISC license.
-- QR Code generation part is from [qrcode-generator](https://www.nayuki.io/page/qr-code-generator-library) under MIT license.
-
-## 🤝 Contributing 
-
-<a href="https://openomy.app/github/react-component/qrcode" target="_blank" style="display: block; width: 100%;" align="center">
-  <img src="https://www.openomy.app/svg?repo=react-component/qrcode&chart=bubble&latestMonth=24" target="_blank" alt="Contribution Leaderboard" style="display: block; width: 100%;" />
-</a>
+@rc-component/qrcode is released under the [MIT](./LICENSE) license.

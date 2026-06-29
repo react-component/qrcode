@@ -1,4 +1,4 @@
-import { QRCodeCanvas } from 'rc-qrcode';
+import { QRCodeCanvas } from '@rc-component/qrcode';
 import React from 'react';
 
 export default () => {
@@ -15,7 +15,7 @@ export default () => {
         style={{ width: '100%' }}
       />
       <hr />
-      <QRCodeCanvas value={value} size={200} title='Ant Design' />
+      <QRCodeCanvas value={value} size={200} title="Ant Design" />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import { QRCodeCanvas } from 'rc-qrcode';
-import React from 'react';
+import { QRCodeCanvas } from '@rc-component/qrcode';
+import React, { useRef } from 'react';
 
-const downloadQRCode = () => {
-  const canvas = document.getElementById('myqrcode')?.querySelector<HTMLCanvasElement>('canvas');
+const downloadQRCode = (container: HTMLDivElement | null) => {
+  const canvas = container?.querySelector<HTMLCanvasElement>('canvas');
   if (canvas) {
     const url = canvas.toDataURL();
     const a = document.createElement('a');
@@ -16,8 +16,10 @@ const downloadQRCode = () => {
 
 export default () => {
   const [value, setValue] = React.useState('https://ant-design.antgroup.com/');
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div id="myqrcode">
+    <div ref={containerRef}>
       <input
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -27,7 +29,9 @@ export default () => {
         placeholder="The value of qrcode"
         style={{ width: '80%' }}
       />
-      <button onClick={downloadQRCode}>Download QRCode</button>
+      <button onClick={() => downloadQRCode(containerRef.current)}>
+        Download QRCode
+      </button>
       <hr />
       <QRCodeCanvas
         value={value}

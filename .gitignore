@@ -23,6 +23,7 @@ node_modules
 *.css
 build
 dist
+docs-dist
 lib
 es
 coverage
@@ -40,3 +41,4 @@ pnpm-lock.yaml
 # dumi
 .dumi/tmp
 .dumi/tmp-production
+.vercel

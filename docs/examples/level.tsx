@@ -1,5 +1,5 @@
-import type { ErrorCorrectionLevel } from 'rc-qrcode';
-import { QRCodeCanvas } from 'rc-qrcode';
+import type { ErrorCorrectionLevel } from '@rc-component/qrcode';
+import { QRCodeCanvas } from '@rc-component/qrcode';
 import React from 'react';
 
 export default () => {

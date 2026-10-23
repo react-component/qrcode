@@ -97,7 +97,7 @@ const QRCodeCanvas = React.forwardRef<HTMLCanvasElement, QRPropsCanvas>(
         if (isSupportPath2d) {
           ctx.fill(new Path2D(generatePath(cellsToDraw, margin)));
         } else {
-          cells.forEach((row, rdx) => {
+          cellsToDraw.forEach((row, rdx) => {
             row.forEach((cell, cdx) => {
               if (cell) {
                 ctx.fillRect(cdx + margin, rdx + margin, 1, 1);
